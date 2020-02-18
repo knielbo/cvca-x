@@ -55,7 +55,6 @@ def main():
 
     # loop for e epochs
     for epoch in np.arange(0, args["epochs"]):
-        print(epoch)
         # dot product og X and W and feed through activation function to give model prediction
         
         preds = sigmoid_activation(trainX.dot(W))
@@ -69,10 +68,10 @@ def main():
             # of the predictions
         d = error * sigmoid_deriv(preds)
         gradient = trainX.T.dot(d)
-
+        
         # nudge the weight matrix in the negative direction of the gradient
         W += -args["alpha"] * gradient
-
+        
         # check for diplay
         if epoch == 0 or (epoch + 1) % 5 == 0:
             print("[INFO] epoch={}, loss={:.7f}".format(int(epoch+1), loss))
