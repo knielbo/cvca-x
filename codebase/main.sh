@@ -10,7 +10,7 @@ start=`date +%s`
 python knn.py --dataset ../datasets/animals
 python linear_example.py
 python gradient_descent.py
-
+python sgd-py --batch-size 5
 
 
 #kill $!; trap 'kill $!' SIGTERM
