@@ -44,6 +44,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-e", "--epochs", type=float, default=100, help="# of epochs")
     ap.add_argument("-a", "--alpha", type=float, default=0.01, help="learning rate")
+    ap.add_argument("-b", "--batch-size", type=int, default=32, help="size of SGD mini-batches")
     args = vars(ap.parse_args())
 
     # generate classification problem n=1000, 2d feature matrix
