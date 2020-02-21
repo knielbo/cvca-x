@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# example of usage 
-## suppress warnings on call
+# example of usage
 start=`date +%s`
 #echo pipeline init
 #while true;do echo -n '>';sleep 1;done &
