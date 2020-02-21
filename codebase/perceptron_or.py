@@ -5,10 +5,10 @@ Train Perceptron class on OR
 from kartina.nn import Perceptron
 import numpy as np
 
-def main()
+def main():
     # construct dataset
-    X = np.array([0, 0], [0, 1], [1, 0], [0, 0])
-    y = np.array([0], [1], [1], [1])
+    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+    y = np.array([[0], [1], [1], [1]])
 
     # define and train perceptron
     print("[INFO] training perceptron...")
@@ -24,3 +24,5 @@ def main()
         pred = p.predict(x)
         print("[INFO] data={}, ground-truth={}, pred={}".format(x, target[0], pred))
 
+if __name__=="__main__":
+    main()
