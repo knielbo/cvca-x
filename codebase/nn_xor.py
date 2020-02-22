@@ -12,10 +12,9 @@ def main():
 
     # define and train perceptron
     print("[INFO] training neural network...")
-    #nn = NeuralNetwork([2, 2, 1], alpha=.5)
-    # test without hidden layer/update
-    nn = NeuralNetwork([2, 1], alpha=.5)
-
+    nn = NeuralNetwork([2, 2, 1], alpha=.5)
+    ## test without hidden layer/update
+    #nn = NeuralNetwork([2, 1], alpha=.5)
     nn.fit(X, y, epochs=20000)
 
     # evaluate
