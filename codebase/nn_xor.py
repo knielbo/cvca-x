@@ -21,9 +21,8 @@ def main():
     # loop over data points
     for (x, target) in zip(X, y):
         # predict and display
-        pred = nn.predict(x)
+        pred = nn.predict(x)[0][0]
         step = 1 if pred > .5 else 0
         print("[INFO] data={}, ground-truth={}, pred={:.4f}, step={}".format(x, target[0], pred, step))
-
 if __name__=="__main__":
     main()
