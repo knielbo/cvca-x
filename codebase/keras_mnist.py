@@ -13,3 +13,10 @@ from tensorflow.keras.datasets import mnist
 from tensorflow.keras import backend as K
 import matplotlib.pyplot as plt
 
+def main()
+    print("foobar")
+
+if __name__ == "__main__":
+    main()
+
+
