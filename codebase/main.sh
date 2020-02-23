@@ -14,6 +14,7 @@ python perceptron_or.py
 python perceptron_and.py
 python perceptron_xor.py
 python nn_xor.py
+python nn_mnist.py
 python keras_mnist.py --output ../figures/keras_mnist.png
 #kill $!; trap 'kill $!' SIGTERM
 #echo
