@@ -17,7 +17,14 @@ def main():
     data = (data - data.min())/(data.max() - data.min())
     print("[INFO] samples: {}, dim: {}".format(data.shape[0], data.shape[1]))
 
+    # split data
+    (trainX, testX, trainY, testY) = train_test_split(data, digits.target, test_size=.25)
 
+    # convert labels from integers to vectors
+    trainY = LabelBinarizer().fit_transform(trainY)
+    testY = LabelBinarizer().fit_transform(testY)
+
+    
 
 if __name__=="__main__":
     main()
