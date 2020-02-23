@@ -26,8 +26,10 @@ def main():
 
     # train network
     print("[INFO] training network...")
-    nn = NeuralNetwork([trainX.shape[0], 32, 16, 10])
+    nn = NeuralNetwork([trainX.shape[1], 32, 16, 10])
     print("[INFO] {}".format(nn))
-    
+    nn.fit(trainX, trainY, epochs=1000)
+
+
 if __name__=="__main__":
     main()
