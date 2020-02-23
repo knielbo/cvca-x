@@ -30,6 +30,12 @@ def main():
     print("[INFO] {}".format(nn))
     nn.fit(trainX, trainY, epochs=1000)
 
+    # evaluate network
+    print(["[INFO] evaluating network..."])
+    predictions = nn.predict(testX)
+    predictions = predictions.argmax(axis=1)
+    print(classification_report(testY.argmax(axis=1), predictions))
+
 
 if __name__=="__main__":
     main()
