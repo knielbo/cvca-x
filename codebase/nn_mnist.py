@@ -24,7 +24,10 @@ def main():
     trainY = LabelBinarizer().fit_transform(trainY)
     testY = LabelBinarizer().fit_transform(testY)
 
+    # train network
+    print("[INFO] training network...")
+    nn = NeuralNetwork([trainX.shape[0], 32, 16, 10])
+    print("[INFO] {}".format(nn))
     
-
 if __name__=="__main__":
     main()
