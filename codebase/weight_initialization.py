@@ -32,9 +32,16 @@ def main():
         # uniform
     limit = np.sqrt(6 / float(F_in + F_out))
     W = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+    # He et al./Kaiming/MSRA uniform and normal, for very deep models with ReLU-like 
+        # activation function
+        # uniform
+    limit = np.sqrt(6 / float(F_in))
+    W = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+        # normal
+    limit = np.sqrt(2 / float(F_in))
+    W = np.random.normal(.0, limit, size=(F_in, F_out))
     
     print(W)
-    # He et al./Kaiming/MSRA uniform and normal
 
 if __name__=="__main__":
     main()
