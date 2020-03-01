@@ -16,6 +16,9 @@ python perceptron_xor.py
 python nn_xor.py
 python nn_mnist.py
 python keras_mnist.py --output ../figures/keras_mnist.png
+python keras_cifar10.py --output ../figures/keras_cifar10.png
+python convolutions.py --image ../datasets/jemma.png
+
 #kill $!; trap 'kill $!' SIGTERM
 #echo
 #echo ':)'
