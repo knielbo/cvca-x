@@ -25,9 +25,15 @@ def main():
         # normal
     limit = np.sqrt(1 / float(F_in))
     W = np.random.normal(.0, limit, size=(F_in, F_out))
-    print(W)
     # Glorot/Xavier uniform and normal
-
+        # normal
+    limit = np.sqrt(2 / float(F_in + F_out))
+    W = np.random.normal(.0, limit, size=(F_in, F_out))
+        # uniform
+    limit = np.sqrt(6 / float(F_in + F_out))
+    W = np.random.uniform(low=-limit, high=limit, size=(F_in, F_out))
+    
+    print(W)
     # He et al./Kaiming/MSRA uniform and normal
 
 if __name__=="__main__":
