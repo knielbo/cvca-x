@@ -24,7 +24,15 @@ def main():
     # grap list of images
     print("[INFO] loading images...")
     imagePaths = list(paths.list_images(args["dataset"]))
-    print(imagePaths)
     
+    # initialize image preprocessors
+    sp = SimplePreprocessor(32, 32)
+    iap = ImageToArrayPreprocessor()
+
+    # load datafrom and scale pixel intensities to [0, 1]
+    sdl = SimpleDatasetLoader(preprocessors=[sp, iap])
+    (data, label) = sdl.load(imagePaths, verbose=500)
+    data = data.astype("float") / 255.
+
 if __name__=="__main__":
     main()
