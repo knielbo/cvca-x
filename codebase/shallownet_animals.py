@@ -19,7 +19,6 @@ from kartina.kautil import gpu_fix
 import os
 
 def main():
-    gpu_fix()
     """
     ###################################################################################
     # bug fix for RTX architecture
@@ -35,6 +34,7 @@ def main():
             print(e)
     ###################################################################################
     """
+    gpu_fix()
     os.system("clear")
     # argument parser and parse arguments
     ap = argparse.ArgumentParser()
