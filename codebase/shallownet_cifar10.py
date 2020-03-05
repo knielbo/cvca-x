@@ -60,6 +60,20 @@ def main():
             )
         )
 
+    # visualize performance
+    plt.style.use("fivethirtyeight")
+    plt.figure()
+    plt.plot(np.arange(0, 40), H.history["loss"], label="train_loss")
+    plt.plot(np.arange(0, 40), H.history["val_loss"], label="val_loss")
+    plt.plot(np.arange(0, 40), H.history["accuracy"], label="train_acc")
+    plt.plot(np.arange(0, 40), H.history["val_accuracy"], label="val_acc")
+    plt.title("Training Loss and Accuracy")
+    plt.xlabel("Epoch #")
+    plt.ylabel("Loss/Accuracy")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig("../figures/shallownet_cifar10.png")
+    plt.close()
 
 if __name__=="__main__":
     main()
