@@ -33,6 +33,22 @@ def main():
     labelNames = ["airplane", "automobile", "bird", "cat", "dear",
         "dog", "frog", "horse", "ship", "truck"]
 
+    # initialize optimizer and model
+    print("[INFO] compiling model...")
+    opt = SGD(lr =.01)
+    model = ShallowNet.build(width=32, height=32, depth=3, classes=10)
+    model.compile(loss="categorical_crossentropy",optimizer=opt,metrics=["accuracy"])
+
+    # train network
+    print("[INFO] training network...")
+    H = model.fit(
+        trainX, trainY, 
+        validation_data=(testX, testY), 
+        batch_size=32,
+        epochs=40,
+        verbose=1
+        )
+
 
 if __name__=="__main__":
     main()
