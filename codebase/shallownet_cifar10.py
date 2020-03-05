@@ -2,7 +2,6 @@
 """
 ShallowNet application to cifar10 dataset
 """
-
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.metrics import classification_report
 from kartina.nn.conv import ShallowNet
