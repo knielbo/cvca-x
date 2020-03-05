@@ -48,6 +48,17 @@ def main():
         epochs=40,
         verbose=1
         )
+    
+    # evaluate the network
+    print("[INFO] evaluating network...")
+    predictions = model.predict(testX, batch_size=32)
+    print(
+        classification_report(
+            testY.argmax(axis=1),
+            predictions.argmax(axis=1),
+            target_names=labelNames
+            )
+        )
 
 
 if __name__=="__main__":
