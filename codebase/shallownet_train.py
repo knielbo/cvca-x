@@ -22,6 +22,18 @@ def main():
     gpu_fix()
     os.system("clear")
 
+    # argument parser and parse arguments
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-d", "--dataset", required=True, help="path to input dataset")
+    ap.add_argument("-m", "--model", required=True, help="path to output model")
+    args = vars(ap.parse_args())
+
+    # grab list of images
+    print("[INFO] loading images...")
+    imagePaths = list(paths.list_images(args["dataset"]))
+    
+
+
 
 if __name__=="__main__":
     main()
