@@ -101,7 +101,7 @@ def main():
 
     # plot performance
     plt.style.use("fivethirtyeight")
-    plt.figure(figsize=(9, 6), dpi=150)
+    plt.figure(figsize=(8,6), dpi=150)
     plt.plot(np.arange(0, 100), H.history["loss"], label="train_loss")
     plt.plot(np.arange(0, 100), H.history["val_loss"], label="val_loss")
     plt.plot(np.arange(0, 100), H.history["accuracy"], label="train_acc")
