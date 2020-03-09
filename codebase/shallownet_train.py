@@ -48,18 +48,22 @@ def main():
             random_state=42
             )
     
+    # one-hot encoding
+    trainY = LabelBinarizer().fit_transform(trainY)
+    testY = LabelBinarizer().fit_transform(testY)
+    
     # init optimizer and model
     print("[INFO] compiling model...")
-    opt = SGD(lr=.005)
+    opt = SGD(lr=5e-3)
     model = ShallowNet.build(
         width=32,
         height=32,
         depth=3,
-        classes=10
+        classes=3
         )
     
     model.compile(
-        loss="categorical_entropy",
+        loss="categorical_crossentropy",
         optimizer=opt,
         metrics=["accuracy"]
         )
@@ -74,12 +78,46 @@ def main():
         batch_size=32,
         epochs=100,
         verbose=1
-        )
+    )
     
     print("[INFO] serializing network...")
     
     model.save(args["model"])
+
+    # evaluate model
+    print("[INFO] evaliating network...")
+    predictions = model.predict(
+        testX,
+        batch_size=32
+    )
     
+    print(
+        classification_report(
+            testY.argmax(axis=1),
+            predictions.argmax(axis=1),
+            target_names=["cat","dog","panda"]
+        )
+    )
+
+    # plot performance
+    plt.style.use("fivethirtyeight")
+    plt.figure(figsize=(9, 6), dpi=150)
+    plt.plot(np.arange(0, 100), H.history["loss"], label="train_loss")
+    plt.plot(np.arange(0, 100), H.history["val_loss"], label="val_loss")
+    plt.plot(np.arange(0, 100), H.history["accuracy"], label="train_acc")
+    plt.plot(np.arange(0, 100), H.history["val_accuracy"], label="val_acc")
+    plt.title("Training Loss and Accuracy")
+    plt.xlabel("Epoch #")
+    plt.ylabel("Loss/Accuracy")
+    plt.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.), 
+        ncol=2, fancybox=True,
+        shadow=True
+        )
+    plt.tight_layout()
+    plt.savefig("../figures/shallownet_train.png")
+    plt.close()
 
     
 
