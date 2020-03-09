@@ -48,6 +48,40 @@ def main():
             random_state=42
             )
     
+    # init optimizer and model
+    print("[INFO] compiling model...")
+    opt = SGD(lr=.005)
+    model = ShallowNet.build(
+        width=32,
+        height=32,
+        depth=3,
+        classes=10
+        )
+    
+    model.compile(
+        loss="categorical_entropy",
+        optimizer=opt,
+        metrics=["accuracy"]
+        )
+    
+    # train model
+    print("[INFO] training network...")
+    
+    H = model.fit(
+        trainX,
+        trainY,
+        validation_data=(testX, testY),
+        batch_size=32,
+        epochs=100,
+        verbose=1
+        )
+    
+    print("[INFO] serializing network...")
+    
+    model.save(args["model"])
+    
+
+    
 
 
 
