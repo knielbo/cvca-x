@@ -23,11 +23,18 @@ git clone https://github.com/knielbo/cvca-x.git
 pip install requirements.txt
 ```
 
-To run train model and generate graph
+To train model
 
 ```
-./main.sh
+
 ```
+
+To run model
+
+```
+
+```
+
 
 ## Running the tests
 
