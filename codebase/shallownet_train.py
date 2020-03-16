@@ -119,9 +119,5 @@ def main():
     plt.savefig("../figures/shallownet_train.png")
     plt.close()
 
-    
-
-
-
 if __name__=="__main__":
     main()
