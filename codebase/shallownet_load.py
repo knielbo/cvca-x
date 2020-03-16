@@ -40,7 +40,7 @@ def main():
             paths.list_images(args["dataset"])
         )
     )
-    idxs = np.random.randint(0, len(imagePaths), size=(5,))
+    idxs = np.random.randint(0, len(imagePaths), size=(10,))
     imagePaths = imagePaths[idxs]
 
     # initialize preprocessors
@@ -58,8 +58,17 @@ def main():
 
     # predict image class
     print("[INFO] predicting")
+    preds = model.predict(data, batch_size=32).argmax(axis=1)
 
-    
+    # loop over sample images
+    for (i, imagePath) in enumerate(imagePaths):
+        image = cv2.imread(imagePath)
+        cv2.putText(
+            image, "Label: {}".format(classLabels[preds[i]]), (10,30),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2
+        )
+        cv2.imshow("Image", image)
+        cv2.waitKey(0)
 
 if __name__=="__main__":
     main()
