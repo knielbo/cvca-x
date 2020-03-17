@@ -44,6 +44,59 @@ def main():
     trainLabels = le.fit_transform(trainLabels)
     testLabels = le.fit_transform(testLabels)
 
-    
+    # init optimizer and model
+    print("[INFO] compiling model...")
+    opt = SGD(lr=1e-2)
+    model = LeNet.build(width=28, height=28, depth=1, classes=10)
+    model.compile(
+        loss="categorical_crossentropy",
+        optimizer=opt,
+        metrics=["accuracy"]
+    )
+
+    # train model
+    print("[INFO] training network...")
+    H = model.fit(
+        trainData,
+        trainLabels,
+        validation_data=(testData, testLabels),
+        batch_size=128,
+        epochs=20,
+        verbose=1
+    )
+
+    # evaluate
+    print("[INFO] evaluating network...")
+    predictions = model.predict(testData, batch_size=128)
+    print(
+        classification_report(
+            testLabels.argmax(axis=1),
+            predictions.argmax(axis=1),
+            target_names=[str(x) for x in le.classes_]
+        )
+    )
+
+    # plot performance
+    plt.style.use("fivethirtyeight")
+    plt.figure(figsize=(8, 6), dpi=150)
+    plt.plot(np.arange(0, 20), H.history["loss"], label="train_loss")
+    plt.plot(np.arange(0, 20), H.history["val_loss"], label="val_loss")
+    plt.plot(np.arange(0, 20), H.history["accuracy"], label="train_acc")
+    plt.plot(np.arange(0, 20), H.history["val_accuracy"], label="val_acc")
+    plt.title("Training Loss and Accuracy")
+    plt.xlabel("Epoch #")
+    plt.ylabel("Loss/Accuracy")
+    plt.legend(
+        loc="center right", 
+        ncol=2, fancybox=True,
+        shadow=True
+        )
+    plt.tight_layout()
+    plt.savefig("../figures/lenet_mnist.png")
+    plt.close()
+
+
+
+
 if __name__=="__main__":
     main()
