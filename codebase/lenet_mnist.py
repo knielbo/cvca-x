@@ -3,7 +3,7 @@
 Driver script for application of LeNet to mnist
 
 Usage
-$ python
+$ python lenet_mnist.py
 """
 from kartina.nn.conv import LeNet
 from tensorflow.keras.optimizers import SGD
@@ -94,9 +94,6 @@ def main():
     plt.tight_layout()
     plt.savefig("../figures/lenet_mnist.png")
     plt.close()
-
-
-
 
 if __name__=="__main__":
     main()

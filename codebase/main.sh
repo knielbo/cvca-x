@@ -21,6 +21,9 @@ python convolutions.py --image ../datasets/jemma.png
 python shallownet_animals.py -d ../datasets/animals/
 # save weight file
 python shallownet_train.py --dataset ../datasets/animals/ --model ../models/shallownet_weights.hdf5
+# train lenet on mnist
+python lenet_mnist.py
+
 
 #kill $!; trap 'kill $!' SIGTERM
 #echo
