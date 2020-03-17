@@ -34,6 +34,16 @@ def main():
     else:
         trainData = trainData.reshape((trainData.shape[0], 28, 28, 1))
         testData = testData.reshape((testData.shape[0], 28, 28, 1))
+    
+    # scale data [0, 1]
+    trainData = trainData.astype("float32") / 255.
+    testData = testData.astype("float32") / 255.
 
+    # one-hot coding
+    le = LabelBinarizer()
+    trainLabels = le.fit_transform(trainLabels)
+    testLabels = le.fit_transform(testLabels)
+
+    
 if __name__=="__main__":
     main()
