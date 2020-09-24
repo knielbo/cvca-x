@@ -74,7 +74,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 Kristoffer L. Nielbo  
-Ross Deans Kristensen-McLachlan
+Ross D. Kristensen-McLachlan
 
 ## License
 
